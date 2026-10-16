@@ -30,9 +30,17 @@
 
 ## 快速开始
 
+> **Windows/CUDA 用户注意：** 直接 `uv pip install -e .` 会从 PyPI 装到 **CPU-only 的 torch**，QLoRA 会因为 `torch.cuda.is_available() == False` 直接报错。必须先装 CUDA 版 torch。
+
 ```powershell
-uv venv --python 3.12 --system-site-packages
+uv venv --python 3.12
+
+# 关键一步：先装 CUDA 版 torch（Blackwell / sm_120 需要 cu128）
+uv pip install --index-url https://download.pytorch.org/whl/cu128 torch
+
+# 再装项目依赖
 uv pip install -e .
+uv pip install "pytest>=8,<10"
 
 # 1. QLoRA 微调（记录显存和 loss）
 python -m llm_quant_lab qlora --model Qwen/Qwen3-0.6B --steps 3
@@ -47,13 +55,23 @@ python -m llm_quant_lab benchmark --batch-size 16
 python -m llm_quant_lab accuracy
 ```
 
-报告写到 `reports/`，模型产物写到 `artifacts/`。两者都不进版本库。
+想要 CUDA 基准测试有效，还需要 GPU 版推理引擎：
+
+```powershell
+uv pip install "onnxruntime-gpu==1.22.0"
+```
+
+> 用 1.22.0 而不是最新版，因为它对应 CUDA 12；1.31 需要 CUDA 13 运行库，在多数开发机上装不上（见失败案例 4）。GPU 版会覆盖 CPU 版，两者不能共存于同一环境。
+
+报告写到 `reports/`（**进版本库**，是 README 数字的证据），模型产物写到 `artifacts/`（数百 MB，不进版本库）。
 
 测试：
 
 ```powershell
 python -m pytest -q
 ```
+
+测试不需要 GPU、不下载模型——用现场构造的极小合成 ONNX 模型跑全链路，所以任何机器上都能跑通。
 
 ## 结果
 
