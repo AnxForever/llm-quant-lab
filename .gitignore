@@ -1,0 +1,17 @@
+# 环境
+.venv/
+__pycache__/
+*.py[cod]
+
+# 模型产物：体积大（数百 MB），不进版本库，用脚本重新生成
+artifacts/
+
+# 报告进版本库：它们是 README 里数字的证据，体积很小
+
+# Hugging Face 缓存（如指向项目内）
+.cache/
+hf-cache/
+
+# 编辑器
+.vscode/
+.idea/

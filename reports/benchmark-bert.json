@@ -1,0 +1,120 @@
+{
+  "config": {
+    "model_id": "AnxForever/chinese-ai-detector-bert",
+    "max_length": 128,
+    "batch_size": 16,
+    "warmup": 5,
+    "repeats": 30,
+    "providers": [
+      "CPUExecutionProvider",
+      "CUDAExecutionProvider"
+    ]
+  },
+  "onnxruntime_version": "1.22.0",
+  "results": {
+    "fp32_CPU": {
+      "requested_provider": "CPUExecutionProvider",
+      "actual_provider": "CPUExecutionProvider",
+      "fell_back": false,
+      "latency_ms": 898.0,
+      "predicted_labels": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "agreement_with_reference": 1.0
+    },
+    "fp32_CUDA": {
+      "requested_provider": "CUDAExecutionProvider",
+      "actual_provider": "CUDAExecutionProvider",
+      "fell_back": false,
+      "latency_ms": 33.3,
+      "predicted_labels": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "agreement_with_reference": 1.0
+    },
+    "int8_CPU": {
+      "requested_provider": "CPUExecutionProvider",
+      "actual_provider": "CPUExecutionProvider",
+      "fell_back": false,
+      "latency_ms": 397.0,
+      "predicted_labels": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "agreement_with_reference": 1.0
+    },
+    "int8_CUDA": {
+      "requested_provider": "CUDAExecutionProvider",
+      "actual_provider": "CUDAExecutionProvider",
+      "fell_back": false,
+      "latency_ms": 452.7,
+      "predicted_labels": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "agreement_with_reference": 1.0
+    }
+  },
+  "notes": [
+    "CUDA DLL 搜索路径复用 torch: C:\\Users\\34758\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\torch\\lib",
+    "agreement_with_reference 以第一个成功组合（FP32 + CPU）为基准。"
+  ]
+}

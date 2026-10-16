@@ -1,0 +1,11 @@
+{
+  "model_id": "AnxForever/chinese-ai-detector-bert",
+  "max_length": 128,
+  "opset": 17,
+  "sizes_mb": {
+    "fp32": 390.3,
+    "int8": 98.3
+  },
+  "size_ratio_int8_vs_fp32": 0.252,
+  "note": "动态 INT8 量化只量化权重，不需要校准数据；体积收益稳定，延迟收益随负载波动。"
+}

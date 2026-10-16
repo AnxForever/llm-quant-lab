@@ -1,0 +1,48 @@
+{
+  "config": {
+    "model_id": "Qwen/Qwen3-0.6B",
+    "max_length": 128,
+    "steps": 3,
+    "batch_size": 1,
+    "learning_rate": 0.0002,
+    "gradient_checkpointing": true,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "seed": 0
+  },
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "load_seconds": 7.0,
+  "trainable_params": 4587520,
+  "total_params": 380436480,
+  "trainable_ratio": 0.012059,
+  "vram_after_load_gb": 0.87,
+  "peak_vram_gb": 1.09,
+  "steps": [
+    {
+      "step": 0,
+      "loss": 2.5218,
+      "step_seconds": 2.1,
+      "peak_vram_gb": 1.08
+    },
+    {
+      "step": 1,
+      "loss": 2.327,
+      "step_seconds": 0.4,
+      "peak_vram_gb": 1.09
+    },
+    {
+      "step": 2,
+      "loss": 1.5804,
+      "step_seconds": 0.48,
+      "peak_vram_gb": 1.09
+    }
+  ],
+  "total_seconds": 3.0
+}

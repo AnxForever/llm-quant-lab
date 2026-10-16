@@ -1,0 +1,31 @@
+[project]
+name = "llm-quant-lab"
+version = "0.1.0"
+description = "LoRA/QLoRA fine-tuning, ONNX INT8 quantization, and multi-provider inference benchmarks on consumer hardware"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "torch>=2.7",
+  "transformers>=4.50,<5",
+  "peft>=0.14,<1",
+  "bitsandbytes>=0.45",
+  "accelerate>=1.0",
+  "onnx>=1.17",
+  "onnxruntime>=1.20",
+  "onnxscript>=0.2",
+  "numpy>=2.0",
+  "datasets>=3.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llm_quant_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
