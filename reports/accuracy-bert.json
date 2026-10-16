@@ -1,0 +1,36 @@
+{
+  "config": {
+    "model_id": "AnxForever/chinese-ai-detector-bert",
+    "dataset_id": "AnxForever/chinese-ai-detection-dataset",
+    "split_file": "test.csv",
+    "text_column": "text",
+    "label_column": "label",
+    "max_length": 256,
+    "batch_size": 16
+  },
+  "samples": 6601,
+  "results": {
+    "onnx_fp32": {
+      "accuracy": 0.9686,
+      "agreement_with_torch": 1.0,
+      "flips_vs_torch": 0,
+      "errors": 207
+    },
+    "onnx_int8": {
+      "accuracy": 0.9696,
+      "agreement_with_torch": 0.9924,
+      "flips_vs_torch": 50,
+      "errors": 201
+    },
+    "torch_fp32": {
+      "accuracy": 0.9686,
+      "agreement_with_torch": 1.0,
+      "flips_vs_torch": 0,
+      "errors": 207
+    }
+  },
+  "notes": [
+    "accuracy 是在本 split 上的实测值；agreement_with_torch 是与 PyTorch FP32 判定的逐条一致率。",
+    "翻转条数（flips）说明量化改变了多少预测；翻转可能正负抵消，所以要与 accuracy 一起看。"
+  ]
+}
